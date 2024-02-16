@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types'
-const Header = ({ name = 'Bob' }) => {
+import Button from './Button'
+const Header = ({ title = '' }) => {
   return (
     <header>
-      <h1>Hello {name}, from Vite</h1>
+      <h1>{title}</h1>
+      <Button color='green' text='Hello' />
     </header>
   );
 }
 
 Header.propTypes = {
-  name: PropTypes.string,
+  title: PropTypes.string,
 }
 
 export default Header;
