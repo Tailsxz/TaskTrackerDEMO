@@ -20,14 +20,20 @@ const App = () => {
     }
   ]);
 
+  //Delete Task
   function handleDelete(id) {
     setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  //Toggle Reminder
+  function handleReminder(id) {
+    console.log(id);
   }
 
   return (
     <div className="container">
       <Header title='Task Tracker' />
-      <Tasks tasks={tasks} onDelete={handleDelete}/>
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={handleDelete} onReminder={handleReminder}/> : <p>You have no tasks left.</p>}
     </div>
   )
 }
