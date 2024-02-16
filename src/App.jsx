@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 import './App.css'
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
   return (
     <div className="container">
       <Header title='Task Tracker' />
+      <AddTask />
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={handleDelete} onReminder={handleReminder}/> : <p>You have no tasks left.</p>}
     </div>
   )
