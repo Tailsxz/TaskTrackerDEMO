@@ -4,6 +4,7 @@ import Tasks from './components/Tasks'
 import './App.css'
 
 const App = () => {
+  //Remember, any useStates and hooks in general should be at the top of your functional component!!!
   const [tasks, setTasks] = useState([
     {
       "id": 1,
@@ -18,10 +19,15 @@ const App = () => {
       "reminder": true
     }
   ]);
+
+  function handleDelete(id) {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
   return (
     <div className="container">
       <Header title='Task Tracker' />
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} onDelete={handleDelete}/>
     </div>
   )
 }
