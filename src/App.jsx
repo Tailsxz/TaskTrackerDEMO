@@ -25,9 +25,9 @@ const App = () => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  //Toggle Reminder
+  //Toggle Reminder, depending on which task was clicked, will set the task object to its current properties while overriding the reminder to be the opposite of what it currently is, which we will check the current reminder value and apply a class if it is true.
   function handleReminder(id) {
-    console.log(id);
+    setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
   }
 
   return (
