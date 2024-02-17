@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import About from './components/About'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import './App.css'
@@ -92,13 +94,22 @@ const App = () => {
   }
 
   return (
-    <div className="container">
-      <Header title='Task Tracker' onShowAddForm={() => setShowingAddForm(!showingAddForm)} showAdd={showingAddForm}/>
-      {showingAddForm && <AddTask onAdd={handleAdd} />}
-      {/* not a part of tutorial, but we added a status state to only show you have no tasks left AFTER the successful fetch. This ensures that the paragraph doesn't show that initially when the status is idle. But now we have access to more robust fetch error handling */}
-      {tasks.length > 0 ? <Tasks tasks={tasks}onDelete={handleDelete} onReminder={handleReminder}/> : status === 'success' && <p>You have no tasks left</p>}
-      <Footer />
-    </div>
+    <Router>
+      <div className="container">
+        <Routes>
+          <Route path='/' element={
+            <>
+              <Header title='Task Tracker' onShowAddForm={() => setShowingAddForm(!showingAddForm)} showAdd={showingAddForm}/>
+              {showingAddForm && <AddTask onAdd={handleAdd} />}
+              {/* not a part of tutorial, but we added a status state to only show you have no tasks left AFTER the successful fetch. This ensures that the paragraph doesn't show that initially when the status is idle. But now we have access to more robust fetch error handling */}
+              {tasks.length > 0 ? <Tasks tasks={tasks}onDelete={handleDelete} onReminder={handleReminder}/> : status === 'success' && <p>You have no tasks left</p>}
+              <Footer />
+            </>}>
+          </Route>
+          <Route path='/about' element={<About />}></Route>
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
