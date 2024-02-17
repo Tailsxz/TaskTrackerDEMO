@@ -8,18 +8,6 @@ const App = () => {
   //Remember, any useStates and hooks in general should be at the top of your functional component!!!
   const [showingAddForm, setShowingAddForm] = useState(false);
   const [tasks, setTasks] = useState([
-    {
-      "id": 1,
-      "text": "Doctors Appointment",
-      "day": "Feb 5th at 2:30pm",
-      "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "Meeting at School",
-      "day": "Feb 6th at 1:30pm",
-      "reminder": true
-    }
   ]);
 
   //Add Task, accepts an object, which we pass as an object literal with our states(the current form inputs) as props.
