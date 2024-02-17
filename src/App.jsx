@@ -36,6 +36,13 @@ const App = () => {
     return data;
   }
 
+  const fetchTask = async (id) => {
+    const res = await fetch(`http://localhost:7722/tasks/${id}`);
+    const data = await res.json();
+    setStatus('pending');
+    return data;
+  }
+
 
 
   //Add Task, accepts an object, which we pass as an object literal with our states(the current form inputs) as props.
@@ -64,8 +71,22 @@ const App = () => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  //Toggle Reminder, depending on which task was clicked, will set the task object to its current properties while overriding the reminder to be the opposite of what it currently is, which we will check the current reminder value and apply a class if it is true.
-  function handleReminder(id) {
+  //Toggle Reminder, depending on which task was clicked, will set the task object to its current properties while overriding the reminder to be the opposite of what it currently is, which we will check the current reminder value and apply a class if it is true. 
+  //Now to refactor into a PUT request!
+  async function handleReminder(id) {
+    const taskToToggle = await fetchTask(id);
+    const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
+
+    const res = await fetch(`http://localhost:7722/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updTask),
+    })
+
+    const data = await res.json();
+    console.log(data);
     setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
   }
 
