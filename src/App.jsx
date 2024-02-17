@@ -6,6 +6,7 @@ import './App.css'
 
 const App = () => {
   //Remember, any useStates and hooks in general should be at the top of your functional component!!!
+  const [showingAddForm, setShowingAddForm] = useState(false);
   const [tasks, setTasks] = useState([
     {
       "id": 1,
@@ -40,8 +41,8 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header title='Task Tracker' />
-      <AddTask onAdd={handleAdd} />
+      <Header title='Task Tracker' onShowAddForm={() => setShowingAddForm(!showingAddForm)}/>
+      {showingAddForm && <AddTask onAdd={handleAdd} />}
       {tasks.length > 0 ? <Tasks tasks={tasks}onDelete={handleDelete} onReminder={handleReminder}/> : <p>You have no tasks left.</p>}
     </div>
   )
