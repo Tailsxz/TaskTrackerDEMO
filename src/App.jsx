@@ -21,6 +21,13 @@ const App = () => {
     }
   ]);
 
+  //Add Task, accepts an object, which we pass as an object literal with our states(the current form inputs) as props.
+  function handleAdd(task) {
+    const id = tasks.length + 1
+    const newTask = {id,...task}
+    setTasks([...tasks, newTask]);
+  }
+
   //Delete Task
   function handleDelete(id) {
     setTasks(tasks.filter((task) => task.id !== id))
@@ -34,8 +41,8 @@ const App = () => {
   return (
     <div className="container">
       <Header title='Task Tracker' />
-      <AddTask />
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={handleDelete} onReminder={handleReminder}/> : <p>You have no tasks left.</p>}
+      <AddTask onAdd={handleAdd} />
+      {tasks.length > 0 ? <Tasks tasks={tasks}onDelete={handleDelete} onReminder={handleReminder}/> : <p>You have no tasks left.</p>}
     </div>
   )
 }

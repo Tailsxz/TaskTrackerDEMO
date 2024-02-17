@@ -11,8 +11,8 @@ const Task = ({ task, onDelete, onReminder }) => {
 
 Task.propTypes = {
   task: PropTypes.object,
-  onDelete: PropTypes.function,
-  onReminder: PropTypes.function,
+  onDelete: PropTypes.func,
+  onReminder: PropTypes.func,
 }
 
 export default Task
