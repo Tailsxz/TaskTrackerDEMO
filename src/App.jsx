@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import './App.css'
@@ -96,6 +97,7 @@ const App = () => {
       {showingAddForm && <AddTask onAdd={handleAdd} />}
       {/* not a part of tutorial, but we added a status state to only show you have no tasks left AFTER the successful fetch. This ensures that the paragraph doesn't show that initially when the status is idle. But now we have access to more robust fetch error handling */}
       {tasks.length > 0 ? <Tasks tasks={tasks}onDelete={handleDelete} onReminder={handleReminder}/> : status === 'success' && <p>You have no tasks left</p>}
+      <Footer />
     </div>
   )
 }
