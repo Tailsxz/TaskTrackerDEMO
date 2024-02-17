@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import About from './components/About'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
+import TaskDetails from './components/TaskDetails'
 import './App.css'
 
 const App = () => {
@@ -106,6 +107,7 @@ const App = () => {
             </>}>
           </Route>
           <Route path='/about' element={<About />}></Route>
+          <Route path='/tasks/:id' element={<TaskDetails />}></Route>
         </Routes>
         <Footer />
       </div>
