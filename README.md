@@ -20,3 +20,7 @@ To get a copy of this project, you can fork the repo then clone it as your own.
 ### Optimizations
 
 ### Knowledge gained from this project
+Learned how absolutely great Vite is for a simple SPA! Honestly amazed at this build tool.
+Further solidified React fundamentals and the flow of a React app.
+Learned how to produce a production build and preview it.
+Learned how to set up a mock backend using json-server for component testing/prototyping.
