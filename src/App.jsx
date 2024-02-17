@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
@@ -9,6 +9,23 @@ const App = () => {
   const [showingAddForm, setShowingAddForm] = useState(false);
   const [tasks, setTasks] = useState([
   ]);
+
+  useEffect(() => {
+    //Setting up our fetch function for the tasks stored in db.json, passing in an empty dependency array as we only need this to run once on the initial mount/render.
+    const fetchTasks = async () => {
+      const res = await fetch('http://localhost:7722/tasks')
+      const data = await res.json()
+      console.log(data);
+    }
+
+    fetchTasks();
+    //clean up to wipe the tasks when this component as a whole is unmounted, just for practice recognizing the practical uses of the clean up function :D. Will not be useful in this context as the Task Tracker itself is the application and not apart of some other component.
+    return () => {
+      setTasks([]);
+    }
+  }, [])
+
+
 
   //Add Task, accepts an object, which we pass as an object literal with our states(the current form inputs) as props.
   function handleAdd(task) {
