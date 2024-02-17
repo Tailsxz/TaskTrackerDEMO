@@ -12,7 +12,7 @@ const Header = ({ title = '', onShowAddForm, showAdd }) => {
 Header.propTypes = {
   title: PropTypes.string,
   onShowAddForm: PropTypes.func,
-  showAdd: PropTypes.boolean,
+  showAdd: PropTypes.bool,
 }
 
 export default Header

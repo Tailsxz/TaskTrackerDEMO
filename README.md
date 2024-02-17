@@ -24,3 +24,4 @@ Learned how absolutely great Vite is for a simple SPA! Honestly amazed at this b
 Further solidified React fundamentals and the flow of a React app.
 Learned how to produce a production build and preview it.
 Learned how to set up a mock backend using json-server for component testing/prototyping.
+Got experiencing setting up HTTP requests to a backend in React(Note:Its very similar to vanilla JavaScript so if you know how to do it in regular JS, its relatively simple to implement in a React App).
