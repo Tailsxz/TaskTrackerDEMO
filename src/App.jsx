@@ -43,6 +43,17 @@ const App = () => {
     // const id = tasks.length + 1
     // const newTask = {id,...task}
     // setTasks([...tasks, newTask]);
+    const res = await fetch('http://localhost:7722/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    })
+
+    const data = await res.json();
+    //so our POST request to json-server when succesful, the response sent back is the object we added itself. So here we just simply append it to the current tasks to reflect the changes in the UI. Found this out by logging the data variable, what I don't like is that it is creating a random id for our data which doesn't align with the numeric incremented id system we've been using for tasks.
+    setTasks([...tasks, data]);
   }
 
   //Delete Task
