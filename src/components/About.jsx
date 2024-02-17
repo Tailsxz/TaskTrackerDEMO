@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 const About = () => {
   return (
     <div>
       <h1>v 1.0.0</h1>
-      <a href="/">Go Back</a>
+      <Link to="/">Go Back</Link>
     </div>
   )
 }
