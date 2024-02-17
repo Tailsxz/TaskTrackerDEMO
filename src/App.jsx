@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header title='Task Tracker' onShowAddForm={() => setShowingAddForm(!showingAddForm)}/>
+      <Header title='Task Tracker' onShowAddForm={() => setShowingAddForm(!showingAddForm)} showAdd={showingAddForm}/>
       {showingAddForm && <AddTask onAdd={handleAdd} />}
       {tasks.length > 0 ? <Tasks tasks={tasks}onDelete={handleDelete} onReminder={handleReminder}/> : <p>You have no tasks left.</p>}
     </div>
