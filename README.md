@@ -1,5 +1,4 @@
-# Project Title
-Task Tracker in React
+# Task Tracker in React
 
 Following Traversy Medias [Crash Course](https://www.youtube.com/watch?v=w7ejDZ8SWv8) on React.
 
