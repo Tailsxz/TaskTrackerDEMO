@@ -16,6 +16,7 @@ function TaskDetails() {
     //So here, since this useEffect is calling our fetch, we want to set the status to pending to rerender and show the loading state AFTER executing this entire callback. This means that the fetch will initiate, and we will rerender showing the loading state, the fetchTask function will pause execution of our async function until the fetch has been successful, this is why during the loading state our application is still responsive, because it is not being blocked! The fetchTask async function will resume execution once we recieved the fetched data, in which we either set the status state to error or success, which will trigger another rerender! Beautiful!! Since we only want the fetch to initial on the initial render of this TaskDetails component, we can set an empty dependency array, otherwise it will initiate the fetch the same task each single render. I am getting linted though as eslint react hooks is recognizing my fetch depends on params.id which it thinks is a state.
     setStatus('pending');
     const fetchTask = async () => {
+      // We were getting http://localhost:2277/http//localhost:7722/tasks/${params.id}` because we missed a colon in the fetch url! It automatically appended the current root path to our fetch url. Interesting.
     const res = await fetch(`http://localhost:7722/tasks/${params.id}`);
     if (res.status === 404) {
       setStatus('ENOENT');
