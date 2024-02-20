@@ -97,8 +97,13 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        <Header title='Task Tracker' onShowAddForm={() => setShowingAddForm(!showingAddForm)} showAdd={showingAddForm}/>
-        {showingAddForm && <AddTask onAdd={handleAdd} />}
+        <Header 
+          title='Task Tracker' 
+          onShowAddForm={() => setShowingAddForm(!showingAddForm)} 
+          showAdd={showingAddForm}
+        />
+        {showingAddForm && 
+        <AddTask onAdd={handleAdd} />}
         <Routes>
           <Route path='/' element={
             <>

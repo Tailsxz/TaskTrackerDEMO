@@ -30,7 +30,7 @@ function TaskDetails() {
     }
     
     fetchTask();
-  }, [])
+  }, [params.id])
 
   if (status === 'ENOENT') {
     // return <Navigate to='/' />
